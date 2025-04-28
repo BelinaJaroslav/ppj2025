@@ -1,0 +1,67 @@
+package com.example.meteo.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+
+@Entity @Table(uniqueConstraints=@UniqueConstraint(columnNames={"name", "code"}))
+public class Country
+{
+    @Id @GeneratedValue @Column
+    @JsonIgnore
+    private int idCountry;
+    @Column
+    private String name;
+    @Column
+    private String code;
+
+    public Country() {}
+
+    public Country(String name, String code)
+    {
+        super();
+        this.name = name;
+        this.code = code;
+    }
+
+    public int getIdCountry()
+    {
+        return idCountry;
+    }
+
+    public void setIdCountry(int idCountry)
+    {
+        this.idCountry = idCountry;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public String getCode()
+    {
+        return code;
+    }
+
+    public void setCode(String code)
+    {
+        this.code = code;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Country [idCountry=" + idCountry + ", name=" + name + ", code=" + code + "]";
+    }
+}
