@@ -8,15 +8,21 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter @Setter
 @Entity @Table(uniqueConstraints=@UniqueConstraint(columnNames={"name", "code"}))
 public class Country
 {
     @Id @GeneratedValue @Column
     @JsonIgnore
-    private int idCountry;
+    @Getter @Setter
+    private int id;
+    @Getter @Setter
     @Column
     private String name;
+    @Getter @Setter
     @Column
     private String code;
 
@@ -29,39 +35,9 @@ public class Country
         this.code = code;
     }
 
-    public int getIdCountry()
-    {
-        return idCountry;
-    }
-
-    public void setIdCountry(int idCountry)
-    {
-        this.idCountry = idCountry;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
-    public String getCode()
-    {
-        return code;
-    }
-
-    public void setCode(String code)
-    {
-        this.code = code;
-    }
-
     @Override
     public String toString()
     {
-        return "Country [idCountry=" + idCountry + ", name=" + name + ", code=" + code + "]";
+        return "Country [idCountry=" + id + ", name=" + name + ", code=" + code + "]";
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -53,6 +54,6 @@ public interface MeasurementRepository extends JpaRepository<Measurement, Long> 
 
         Optional<Measurement> findFirstByCityIdOrderByTimestampDesc(Long cityId);
 
-    List<Measurement> findByCityIdAndTimestampAfter(Long cityId, LocalDateTime since);
+    List<Measurement> findByCityIdAndTimestampAfter(Long cityId, Instant since);
 
 }

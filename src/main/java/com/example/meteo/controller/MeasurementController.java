@@ -5,6 +5,7 @@ import com.example.meteo.service.MeasurementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -46,9 +47,9 @@ public class MeasurementController {
     }
 
     // Zvláštní endpoint na získání měření pro město za určité období
-    @GetMapping("/city/{cityId}/since/{days}")
-    public List<Measurement> getMeasurementsForCitySince(@PathVariable Long cityId, @PathVariable int days) {
-        LocalDateTime since = LocalDateTime.now().minusDays(days);
+    @GetMapping("/city/{cityId}/since/{millis}")
+    public List<Measurement> getMeasurementsForCitySince(@PathVariable Long cityId, @PathVariable long millis) {
+        Instant since = Instant.ofEpochMilli(millis);
         return measurementService.getMeasurementsForCitySince(cityId, since);
     }
 }

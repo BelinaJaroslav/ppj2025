@@ -5,7 +5,7 @@ import com.example.meteo.repository.MeasurementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.Date;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -49,7 +49,7 @@ public class MeasurementService {
         measurementRepository.deleteById(id);
     }
 
-    public List<Measurement> getMeasurementsForCitySince(Long cityId, LocalDateTime since) {
+    public List<Measurement> getMeasurementsForCitySince(Long cityId, Instant since) {
         return measurementRepository.findByCityIdAndTimestampAfter(cityId, since);
     }
 }

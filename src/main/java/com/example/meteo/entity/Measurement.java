@@ -1,7 +1,11 @@
 package com.example.meteo.entity;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Date;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -20,24 +24,38 @@ import jakarta.persistence.UniqueConstraint;
 @Entity @Table(uniqueConstraints=@UniqueConstraint(columnNames={"city", "date"}))
 public class Measurement
 {
-    @Id @GeneratedValue @Column
+    @Id @GeneratedValue
+    @Getter @Setter
+    @Column
     @JsonIgnore
     private int idMeasurement;
+    @Getter @Setter
     @ManyToOne @JoinColumn(name="idCity") @OnDelete(action = OnDeleteAction.CASCADE)
     private City city;
+    @Getter @Setter
     @Column
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date date;
+    @Getter @Setter
     @Column
     private double temperature;
+    @Getter @Setter
     @Column
     private double pressure;
+    @Getter @Setter
     @Column
     private double humidity;
+    @Getter @Setter
     @Column
     private double wind;
+    @Getter @Setter
     @Column
     private double rain;
+    @Getter @Setter
+    @Column
+    private Instant timestamp;
+
+
 
     public Measurement() {}
 
@@ -53,85 +71,6 @@ public class Measurement
         this.rain = rain;
     }
 
-    public int getIdMeasurement()
-    {
-        return idMeasurement;
-    }
-
-    public void setIdMeasurement(int idMeasurement)
-    {
-        this.idMeasurement = idMeasurement;
-    }
-
-    public City getCity()
-    {
-        return city;
-    }
-
-    public void setCity(City city)
-    {
-        this.city = city;
-    }
-
-    public Date getDate()
-    {
-        return date;
-    }
-
-    public void setDate(Date date)
-    {
-        this.date = date;
-    }
-
-    public double getTemperature()
-    {
-        return temperature;
-    }
-
-    public void setTemperature(double temperature)
-    {
-        this.temperature = temperature;
-    }
-
-    public double getPressure()
-    {
-        return pressure;
-    }
-
-    public void setPressure(double pressure)
-    {
-        this.pressure = pressure;
-    }
-
-    public double getHumidity()
-    {
-        return humidity;
-    }
-
-    public void setHumidity(double humidity)
-    {
-        this.humidity = humidity;
-    }
-
-    public double getWind()
-    {
-        return wind;
-    }
-
-    public void setWind(double wind)
-    {
-        this.wind = wind;
-    }
-
-    public double getRain()
-    {
-        return rain;
-    }
-
-    public void setRain(double rain)
-    {
-        this.rain = rain;
-    }
 
     @Override
     public String toString()
