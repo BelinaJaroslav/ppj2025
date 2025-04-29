@@ -11,14 +11,14 @@ import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+
 @Entity @Table(uniqueConstraints=@UniqueConstraint(columnNames={"name", "code"}))
 public class Country
 {
     @Id @GeneratedValue @Column
     @JsonIgnore
     @Getter @Setter
-    private int id;
+    private int idCountry;
     @Getter @Setter
     @Column
     private String name;
@@ -38,6 +38,6 @@ public class Country
     @Override
     public String toString()
     {
-        return "Country [idCountry=" + id + ", name=" + name + ", code=" + code + "]";
+        return "Country [idCountry=" + idCountry + ", name=" + name + ", code=" + code + "]";
     }
 }

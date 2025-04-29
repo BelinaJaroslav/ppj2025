@@ -25,7 +25,7 @@ public interface MeasurementRepository extends JpaRepository<Measurement, Long> 
             @Param("countryCode") String countryCode);
 
     // Find measurements by city ID
-    @Query("SELECT m FROM Measurement m WHERE m.city.id = :cityId")
+    @Query("SELECT m FROM Measurement m WHERE m.city.idCity = :cityId")
     List<Measurement> findByCityId(@Param("cityId") Long cityId);
 
     // Find measurement by city name, country code and exact timestamp
@@ -41,10 +41,10 @@ public interface MeasurementRepository extends JpaRepository<Measurement, Long> 
             @Param("timestamp") LocalDateTime timestamp);
 
     // Additional useful queries
-    List<Measurement> findByCityIdOrderByTimestampDesc(Long cityId);
+    List<Measurement> findByCity_IdCityOrderByTimestampDesc(Long cityId);
 
     @Query("SELECT m FROM Measurement m " +
-            "WHERE m.city.id = :cityId " +
+            "WHERE m.city.idCity = :cityId " +
             "AND m.timestamp BETWEEN :start AND :end " +
             "ORDER BY m.timestamp DESC")
     List<Measurement> findByCityAndDateRange(
@@ -52,8 +52,9 @@ public interface MeasurementRepository extends JpaRepository<Measurement, Long> 
             @Param("start") LocalDateTime start,
             @Param("end") LocalDateTime end);
 
-        Optional<Measurement> findFirstByCityIdOrderByTimestampDesc(Long cityId);
+        //Optional<Measurement> findByCity_idCityOrderByTimestampDesc(Long cityId);
 
-    List<Measurement> findByCityIdAndTimestampAfter(Long cityId, Instant since);
+    List<Measurement> findByCity_IdCityAndTimestampAfter(Long idCity, Instant timestamp);
+
 
 }

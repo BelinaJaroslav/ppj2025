@@ -19,7 +19,7 @@ import java.util.List;
 @Service
 public class DownloadService {
 
-    private static Logger log = LoggerFactory.getLogger(DownloadService.class);
+    private static final Logger log = LoggerFactory.getLogger(DownloadService.class);
     private static final long UPDATE_INTERVAL = 1000 * 60 * 10; // 10 minut
     @Value("${openweathermap.api.key}")
     private String apiKey;
@@ -56,7 +56,7 @@ public class DownloadService {
 
         for (City city : cities) {
             try {
-                String url = apiUrl + "?id=" + city.getId() + "&units=metric&appid=" + apiKey;
+                String url = apiUrl + "?id=" + city.getIdCity() + "&units=metric&appid=" + apiKey;
                 String response = restTemplate.getForObject(url, String.class);
                 Measurement measurement = parseMeasurement(response, city);
 

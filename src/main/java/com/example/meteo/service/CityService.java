@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 @Service
 public class CityService {
 
-    Logger log = LoggerFactory.getLogger(CityController.class);
+    private static final Logger log = LoggerFactory.getLogger(CityController.class);
 
     private final CityRepository cityRepository;
 

@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class MeteoApplication {
-    private static final Logger log = LoggerFactory.getLogger(CityController.class);
+    private static final Logger log = LoggerFactory.getLogger(MeteoApplication.class);
 
     public static void main(String[] args) {
         try {

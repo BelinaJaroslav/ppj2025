@@ -50,6 +50,6 @@ public class MeasurementService {
     }
 
     public List<Measurement> getMeasurementsForCitySince(Long cityId, Instant since) {
-        return measurementRepository.findByCityIdAndTimestampAfter(cityId, since);
+        return measurementRepository.findByCity_IdCityAndTimestampAfter(cityId, since);
     }
 }

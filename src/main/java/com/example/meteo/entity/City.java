@@ -27,7 +27,7 @@ public class City
 
     @Id @GeneratedValue @Column
     @JsonIgnore
-    private int id;
+    private int idCity;
     @Column
     private String name;
     @ManyToOne @JoinColumn(name="idCountry") @OnDelete(action = OnDeleteAction.CASCADE)
@@ -38,7 +38,7 @@ public class City
     private double longitude;
 
     public City() {
-        log.info("Creating new City");
+        log.info("Creating new City Empty");
     }
 
     public static Logger log = LoggerFactory.getLogger(City.class);
@@ -57,7 +57,7 @@ public class City
     @Override
     public String toString()
     {
-        return "City [idCity=" + id + ", name=" + name + ", country=" + country + ", latitude=" + latitude
+        return "City [idCity=" + idCity + ", name=" + name + ", country=" + country + ", latitude=" + latitude
                 + ", longitude=" + longitude + "]";
     }
 }

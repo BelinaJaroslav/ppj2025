@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 @RestController
 @RequestMapping("/api/countries")
 public class CountryController {
-    Logger log = LoggerFactory.getLogger(CityController.class);
+    private static final Logger log = LoggerFactory.getLogger(CityController.class);
     private final CountryService countryService;
 
     @Autowired
