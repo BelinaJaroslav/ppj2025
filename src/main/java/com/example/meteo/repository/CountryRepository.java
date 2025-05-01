@@ -9,6 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 @RepositoryRestResource(collectionResourceRel="Country", path="country")
 public interface CountryRepository extends JpaRepository<Country, Long> {
-    boolean existsByName(String name);
-    boolean existsByCode(String code);
+    Optional<Country> findByCode(String code);
 }

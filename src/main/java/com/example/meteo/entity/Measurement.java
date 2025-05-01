@@ -1,7 +1,6 @@
 package com.example.meteo.entity;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import lombok.Getter;
@@ -21,7 +20,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
-@Entity @Table(uniqueConstraints=@UniqueConstraint(columnNames={"city", "date"}))
+@Entity @Table(uniqueConstraints=@UniqueConstraint(columnNames={"id_city", "date"}))
 public class Measurement
 {
     @Id @GeneratedValue
@@ -30,7 +29,7 @@ public class Measurement
     @JsonIgnore
     private int idMeasurement;
     @Getter @Setter
-    @ManyToOne @JoinColumn(name="idCity") @OnDelete(action = OnDeleteAction.CASCADE)
+    @ManyToOne @JoinColumn(name="id_City") @OnDelete(action = OnDeleteAction.CASCADE)
     private City city;
     @Getter @Setter
     @Column

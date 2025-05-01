@@ -21,7 +21,7 @@ import jakarta.persistence.UniqueConstraint;
 
 
 @Getter @Setter
-@Entity @Table(uniqueConstraints=@UniqueConstraint(columnNames={"name", "country"}))
+@Entity @Table(uniqueConstraints=@UniqueConstraint(columnNames={"name", "id_country"}))
 public class City
 {
 
@@ -30,7 +30,7 @@ public class City
     private int idCity;
     @Column
     private String name;
-    @ManyToOne @JoinColumn(name="idCountry") @OnDelete(action = OnDeleteAction.CASCADE)
+    @ManyToOne @JoinColumn(name="id_Country") @OnDelete(action = OnDeleteAction.CASCADE)
     private Country country;
     @Column
     private double latitude;
