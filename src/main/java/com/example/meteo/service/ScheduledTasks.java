@@ -7,6 +7,7 @@ import com.example.meteo.repository.CityRepository;
 import com.example.meteo.repository.CountryRepository;
 import com.example.meteo.repository.MeasurementRepository;
 import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.PathNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,18 +90,31 @@ public class ScheduledTasks {
     }
 
     private Measurement parseMeasurement(String response, City city) {
-
         log.info("parseMeasurement");
+        double rain= 0;
 
         double temperature = toDouble(JsonPath.read(response, "$.main.temp"));
         int humidity = JsonPath.read(response, "$.main.humidity");
         int dt = JsonPath.read(response, "$.dt");
+        try {
+            rain = JsonPath.read(response, "$.rain['1h']");
+        } catch (PathNotFoundException e) {}
+        int pressure= JsonPath.read(response, "$.main.pressure");
+        double wind = JsonPath.read(response, "$.wind.speed");
+
 
         Measurement measurement = new Measurement();
-        measurement.setCity(city);
-        measurement.setTemperature(temperature);
-        measurement.setHumidity(humidity);
+
         measurement.setDate(new Date(dt));
+        measurement.setHumidity(humidity);
+        measurement.setPressure(pressure);
+        measurement.setRain(rain);
+        measurement.setTemperature(temperature);
+
+        measurement.setWind(wind);
+        measurement.setCity(city);
+
+
 
         return measurement;
     }

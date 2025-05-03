@@ -27,6 +27,7 @@ public class City
 
     @Id @GeneratedValue @Column
     @JsonIgnore
+    @Setter
     private int idCity;
     @Column
     private String name;

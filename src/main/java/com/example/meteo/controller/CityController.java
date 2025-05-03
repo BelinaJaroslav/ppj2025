@@ -2,6 +2,7 @@ package com.example.meteo.controller;
 
 import com.example.meteo.entity.City;
 import com.example.meteo.service.CityService;
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,4 +56,6 @@ public class CityController {
         log.info("Deleting City");
         cityService.deleteCity(id);
     }
+
+
 }

@@ -14,6 +14,7 @@ public class Country
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_country")
     @JsonIgnore
+    @Setter
     private int idCountry;
     @Getter @Setter
     @Column
